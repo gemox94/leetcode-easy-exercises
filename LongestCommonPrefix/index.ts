@@ -1,3 +1,5 @@
+import testcases from "./testcases";
+
 /**
  * ----------------------------------------------------------------------------------------------------------------------------------------------------------
  * --------------------------------------------------------------- V1 (NOT WORKING) -------------------------------------------------------------------------
@@ -32,10 +34,10 @@ function runLongestCommonPrefix(words: string[]): string {
 
     if (!initialWord) {
 
-      const prefixArray: string[] =
-        Object.keys(prefixMap).map((prefix: string) => prefix);
+        const prefixArray: string[] =
+            Object.keys(prefixMap).map((prefix: string) => prefix);
 
-      return !prefixArray.length ? '' : <string>prefixArray.sort((a: string, b: string) => a.length - b.length).pop();
+        return !prefixArray.length ? '' : <string>prefixArray.sort((a: string, b: string) => a.length - b.length).pop();
     };
 
     for (let i=0; i<words.length; i++) {
@@ -57,18 +59,30 @@ function longestCommonPrefix(words: string[]): string {
  * ----------------------------------------------------------------------------------------------------------------------------------------------------------
  */
 
- function longestCommonPrefixV2(words: string[]): string {
+function longestCommonPrefixV2(words: string[]): string {
 
-   if (!words.length) return '';
-   let prefix: string = words[0];
-   for (let i=1; i<words.length; i++) {
-     while (words[i].indexOf(prefix) !== 0) {
-       prefix = prefix.substring(0, prefix.length - 1);
-       if (prefix === '') return '';
-     }
-   }
+    // If the array has no elements, return empty string
+    if (!words.length) return '';
 
-   return prefix;
- }
+    // Assign as prefix the first word in the array
+    let prefix: string = words[0];
 
-console.log(longestCommonPrefixV2(["play","plenty","plastic"]));
+    // Loop over the remaining words by starting at index 1
+    for (let i=1; i<words.length; i++) {
+
+        /**
+         *
+         */
+        while (words[i].indexOf(prefix) !== 0) {
+            prefix = prefix.substring(0, prefix.length - 1);
+            if (prefix === '') return '';
+        }
+    }
+
+    return prefix;
+}
+
+testcases.forEach((testcase: string[]) => {
+    const result = longestCommonPrefixV2(testcase);
+    console.log('LCP: ', result);
+});
