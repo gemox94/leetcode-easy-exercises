@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lcp": "ts-node ./LongestCommonPrefix/index.ts",
+    "1_lcp": "ts-node ./1_LongestCommonPrefix/index.ts",
+    "2_vp": "ts-node ./2_ValidParentheses/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
