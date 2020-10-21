@@ -28,7 +28,7 @@ const getListNodeValues = (list: ListNode | null, container: number[] = []): num
     }
 }
 
-const generateListNodeFromArray = (values: number[], list: ListNode | null = null) => {
+const generateListNodeFromArray = (values: number[], list: ListNode | null = null): ListNode | null => {
 
     const value = values.pop();
     if (value === undefined) {
